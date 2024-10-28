@@ -7,6 +7,7 @@ public class Main {
 
         while(true) {
             try {
+
                 // Задание 1.1
                 System.out.println("\n=========================================");
                 System.out.println("Задание 1.1");
@@ -119,7 +120,6 @@ public class Main {
 
                 System.out.print("Введите новую третью оценку для студента Пети: ");
                 int newMark3 = scanner.nextInt();
-                scanner.close(); // Закрываем сканнер
 
                 // Обновление оценок
                 int[] updatedMarks = {newMark1, newMark2, newMark3};
