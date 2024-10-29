@@ -39,7 +39,7 @@ public class Main {
                 System.out.println("=========================================\n");
 
                 // Ввод для линии 1
-                System.out.print("Введите x и y для начала начала первой линии(через пробел): ");
+                System.out.print("Введите x и y для начала первой линии(через пробел): ");
                 int x1Start = scanner.nextInt();
                 int y1Start = scanner.nextInt();
 
@@ -48,7 +48,7 @@ public class Main {
                 int y1End = scanner.nextInt();
 
                 // Ввод для линии 2
-                System.out.print("Введите x и y для начала начала второй линии(через пробел): ");
+                System.out.print("Введите x и y для начала второй линии(через пробел): ");
                 int x2Start = scanner.nextInt();
                 int y2Start = scanner.nextInt();
 
@@ -92,38 +92,13 @@ public class Main {
                 System.out.println("=========================================\n");
 
                 // Ввод имени студента
-                System.out.print("Введите имя студента: ");
-                String name = scanner.nextLine(); // Пробел после ввода имени
-
-                // Ввод оценок студента
-                System.out.print("Введите оценки студента (через пробел): ");
-                String[] marksInput = scanner.nextLine().split("\\s+");
-                int[] marks = new int[Math.min(marksInput.length, 3)];
-                for (int i = 0; i < Math.min(marksInput.length, 3); i++) {
-                    marks[i] = Integer.parseInt(marksInput[i]);
-                }
-
-                // Создание объектов Student
-                Student student = new Student(name, marks.clone());
-                Student student1 = new Student(name, marks.clone()); // Копируем массив оценок
-
+                Student student = new Student("Вася", new int[]{3, 4, 5});
+                Student student1 = new Student("Петя", student.getMarks());
                 System.out.println(student + " : " + student1);
 
-                // Изменение оценок
-                System.out.print("Введите новую первую оценку для студента Пети: ");
-                int newMark1 = scanner.nextInt();
-                scanner.nextLine(); // Очистка буфера ввода
-
-                System.out.print("Введите новую вторую оценку для студента Пети: ");
-                int newMark2 = scanner.nextInt();
-                scanner.nextLine(); // Очистка буфера ввода
-
-                System.out.print("Введите новую третью оценку для студента Пети: ");
-                int newMark3 = scanner.nextInt();
-
-                // Обновление оценок
-                int[] updatedMarks = {newMark1, newMark2, newMark3};
-                student1.setMarks(updatedMarks);
+                int[] student1Marks = student1.getMarks();
+                student1Marks[0] = 5;
+                student1.setMarks(student1Marks);
 
                 System.out.println(student + " : " + student1); // Результаты студента 1 тоже изменились, так как массивы одинаковые
 
@@ -178,15 +153,8 @@ public class Main {
                 Line line42 = new Line(new Dot(x42_start, y42_start), new Dot(x42_end, y42_end));
                 System.out.println(line42);
 
-                System.out.print("Введите x и y координаты для начала линии 4.3 (через пробел): ");
-                int x43_start = scanner.nextInt();
-                int y43_start = scanner.nextInt();
-
-                System.out.print("Введите x и y координаты для конца линии 4.3 (через пробел): ");
-                int x43_end = scanner.nextInt();
-                int y43_end = scanner.nextInt();
-
-                Line line43 = new Line(new Dot(x43_start, y43_start), new Dot(x43_end, y43_end));
+                System.out.println("Линия 4.3: ");
+                Line line43 = new Line(line41.getStart(), line42.getEnd());
                 System.out.println(line43);
 
                 // Задание 5.3
